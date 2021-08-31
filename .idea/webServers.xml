@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c31465e9-5860-42be-8a4c-d5fcf7382813" name="LVALENTIN" url="http://groups.lvalentin.com.br">
+        <fileTransfer rootFolder="/domains/lvalentin.com.br/public_html/groups" host="213.190.6.73" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
