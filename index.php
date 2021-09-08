@@ -1,4 +1,5 @@
 <?php
+clearstatcache();
 session_start();
 $url = (isset($_GET['url'])) ? $_GET['url']:'home';
 $url = str_replace(".php", "", $url);
@@ -7,11 +8,11 @@ $file = $url =='admin'?'admin.php':"System/View/" .$url .".php";
 $checkurl ="";
 $checklink ="";
 for ($i = 2; $i <= count($contb) ; $i++) { $checkurl = $checkurl."../"; }
-for ($i = 3; $i <= count($contb) ; $i++) { $checklink = $checklink."../"; }
+for ($i = 0; $i <= count($contb) ; $i++) { $checklink = $checklink."../"; }
 ?>
 <!DOCTYPE HTML>
 
-<html>
+<html lang="pt-br">
 	<head>
         <title>Croud</title>
 		<meta charset="utf-8" />
@@ -27,6 +28,7 @@ for ($i = 3; $i <= count($contb) ; $i++) { $checklink = $checklink."../"; }
 
 <?php
 include('System/View/navbar.php');
+
 if( $url == "home"){
 //  include('System/View/navbar.php');
 }
@@ -36,7 +38,7 @@ else if(@$_SESSION['adm']){
 ?>
 <div id="wrapper">
 <?php
-
+include('System/View/navbarSistema.php');
 if(is_file($file)){
 	if($url != "home"){
 		// include('System/Checker/chekerlogin.php');

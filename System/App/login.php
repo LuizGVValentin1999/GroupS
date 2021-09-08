@@ -10,6 +10,7 @@ switch ($_POST['funcao']) {
 }
 
 function login($post){
+    session_start();
     include('../../System/Checker/conection.php');
 
     if(empty($_POST['USUARIO']) || empty($_POST['SENHA'])) {
