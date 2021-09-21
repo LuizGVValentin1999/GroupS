@@ -1,9 +1,7 @@
-<!---->
-<!--<div class="topnav">-->
-<!--    <div class="center">-->
-<!--        <a class="active" href="#home">Home</a>-->
-<!--        <a href="#news">News</a>-->
-<!--        <a href="#contact">Contact</a>-->
-<!--        <a href="#about">About</a>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="topnav">
+    <div class="center" style="cursor: pointer;">
+        <a id="todosGrupos" onclick="filtro('todosGrupos');" class="active"  >Chat</a>
+        <a id="publicosGrupos" onclick="filtro('publicosGrupos');">Forum</a>
+        <a id="privadosGrupos" onclick="filtro('privadosGrupos');">Calendario</a>
+    </div>
+</div>

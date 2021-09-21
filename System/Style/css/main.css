@@ -175,9 +175,6 @@ em, i {
 	font-style: italic;
 }
 
-p {
-	margin: 0 0 2em 0;
-}
 
 h1, h2, h3, h4, h5, h6 {
 	color: #ffffff;
@@ -1888,7 +1885,7 @@ form > .fields > .field.quarter {
 
 }
 
-label {
+label :not(.label-ignore) {
 	color: #ffffff;
 	display: block;
 	font-size: 0.8em;

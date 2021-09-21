@@ -5,8 +5,8 @@
 				<h1>Ola, Bem vindo a Group S</h1>
 			</header>
 			<div class="content">
-				<p>Um local para Aprender e ajudar a outros a aprender<br />
-				espero que goste do tempo que passara aqui.</p>
+				<p>Um local para aprender e ajudar outros a aprenderem.<br />
+                    Espero que goste do tempo que passará aqui.</p>
 				<ul class="actions">
 					<li><a data-modal="modal-medicao" class="button modal-trigger">Login</a></li>
 				</ul>
