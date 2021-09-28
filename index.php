@@ -21,6 +21,7 @@ for ($i = 0; $i <= count($contb) ; $i++) { $checklink = $checklink."../"; }
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="<?=$checkurl?>System/Style/css/style.css" />
 		<link rel="stylesheet" href="<?=$checkurl?>System/Style/css/main.css" />
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 		<noscript><link rel="stylesheet" href="<?=$checkurl?>System/Style/css/noscript.css" /></noscript>
     
 	</head>
@@ -32,13 +33,12 @@ include('System/View/navbar.php');
 if( $url == "home"){
 //  include('System/View/navbar.php');
 }
-else if(@$_SESSION['adm']){
-	include('System/View/Sistema/navbar.php');
-}
+
 ?>
 <div id="wrapper">
 <?php
-include('System/View/navbarSistema.php');
+if( strpos($url,"Group") !== false )
+    include('System/View/navbarSistema.php');
 if(is_file($file)){
 	if($url != "home"){
 		// include('System/Checker/chekerlogin.php');
@@ -53,14 +53,16 @@ if(is_file($file)){
 </div>
 
  			<!-- Scripts -->
-			 <script src="<?=$checkurl?>System/Style/js/jquery.min.js"></script>
-			<script src="<?=$checkurl?>System/Style/js/jquery.scrolly.min.js"></script>
-			<script src="<?=$checkurl?>System/Style/js/jquery.scrollex.min.js"></script>
-			<script src="<?=$checkurl?>System/Style/js/browser.min.js"></script>
-			<script src="<?=$checkurl?>System/Style/js/breakpoints.min.js"></script>
-			<script src="<?=$checkurl?>System/Style/js/util.js"></script>
-			<script src="<?=$checkurl?>System/Style/js/main.js"></script>
-			<script src="<?=$checkurl?>System/Style/js/function.js"></script>
+ <script src="<?=$checkurl?>System/Style/js/jquery.min.js"></script>
+<script src="<?=$checkurl?>System/Style/js/jquery.scrolly.min.js"></script>
+<script src="<?=$checkurl?>System/Style/js/jquery.scrollex.min.js"></script>
+<script src="<?=$checkurl?>System/Style/js/browser.min.js"></script>
+<script src="<?=$checkurl?>System/Style/js/breakpoints.min.js"></script>
+<script src="<?=$checkurl?>System/Style/js/util.js"></script>
+<script src="<?=$checkurl?>System/Style/js/main.js"></script>
+<script src="<?=$checkurl?>System/Style/js/function.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js"></script>
 	
 
 

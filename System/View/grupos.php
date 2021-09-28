@@ -29,7 +29,7 @@
 
     function buscarlista(inicial,filtro){
         $.ajax({
-            url : "<?=$checklink?>System/App/GroupS/grupos.php",
+            url : "<?=$checklink?>System/App/grupos.php",
             type : 'post',
             datatype: "html",
             data : {

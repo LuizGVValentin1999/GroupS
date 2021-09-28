@@ -22,7 +22,7 @@ function form($post)
     $query = "INSERT INTO CHAT (MENSAGEM, IMAGEM, ARQUIVO, GRUPO, USUARIO) VALUES ('".$post['MENSAGEM']."', '', '', '1', '".$_SESSION['login']['ID']."');";
 
     $result_user = mysqli_query($con, $query);
-    header("Location: ../../../GroupS/chat");
+    header("Location: ../../../Group/chat");
 }
 
 function chat($post)

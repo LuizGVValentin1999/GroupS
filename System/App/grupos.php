@@ -13,7 +13,7 @@ switch ($_POST['funcao']) {
 
 function listagem($post)
 {
-    include('../../../System/Checker/conection.php');
+    include('../../System/Checker/conection.php');
 
     $filtro = " WHERE ";
     $filtroTipo = '';
@@ -81,7 +81,7 @@ function form($post)
     $query = "UPDATE USUARIO SET `AREAS_CONHECIMENTO` = '".$areas."' WHERE (`ID` = '".$_SESSION['login']['ID']."');";
 
     $result_user = mysqli_query($con, $query);
-    header("Location: ../../../GroupS/grupos");
+    header("Location: ../../../grupos");
 }
 
 ?>

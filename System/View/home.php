@@ -8,7 +8,7 @@
 				<p>Um local para aprender e ajudar outros a aprenderem.<br />
                     Espero que goste do tempo que passará aqui.</p>
 				<ul class="actions">
-					<li><a data-modal="modal-medicao" class="button modal-trigger">Login</a></li>
+					<li><a data-modal="modal-login" class="button modal-trigger">Login</a></li>
 				</ul>
 			</div>
 		</div>
@@ -16,7 +16,7 @@
         <!-- Button trigger modal -->
 
         <!-- Modal -->
-        <div class="modal" id="modal-medicao">
+        <div class="modal" id="modal-login">
             <div class="modal-sandbox"></div>
             <div class="modal-box"  style="width: 80%;">
                 <div class="modal-header">
@@ -77,7 +77,7 @@
         })
             .done(function(msg){
                 if (msg==1)
-                    $(location).attr('href', '../../../GroupS/areasConhecimento');
+                    $(location).attr('href', '../../../areasConhecimento');
                 else
                     $("#resultado").html(msg);
             })

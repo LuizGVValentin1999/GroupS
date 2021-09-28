@@ -1908,7 +1908,7 @@ input, select, textarea {
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background: rgba(212, 212, 255, 0.035);
+		background: rgba(212, 212, 255, 0.1);
 		border: none;
 		border-radius: 0;
 		color: inherit;
@@ -1917,6 +1917,7 @@ input, select, textarea {
 		padding: 0 1em;
 		text-decoration: none;
 		width: 100%;
+		border-radius: 1em;
 	}
 
 		input[type="text"]:invalid,
@@ -2527,6 +2528,7 @@ input, select, textarea {
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
+		border-radius: 1em;
 	}
 
 		input[type="submit"]:hover, input[type="submit"]:active,
