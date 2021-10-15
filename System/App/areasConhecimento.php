@@ -79,8 +79,6 @@ function formAreas($post,$files)
         move_uploaded_file($files['IMG']['tmp_name'], $diretorio.$novo_nome);
 
 
-        $con->query($query);
-
     }
 
     $query = "INSERT INTO AREAS_CONHECIMENTO (NOME, DESCRICAO, IMAGEM, BG, COR) VALUES ('{$post['NOME']}', '{$post['DESCRICAO']}', '{$novo_nome}', '{$post['BG']}', '{$post['COR']}');";

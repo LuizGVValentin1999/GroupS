@@ -9,13 +9,12 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Salas</a></li>
+							<li><a href="<?=$checklink?>grupos">Grupos</a></li>
+							<li><a href="<?=$checklink?>grupos">Grupos que participo</a></li>
 							<li><a href="generic.html">Perfil</a></li>
-							<li><a href="elements.html">Conexões</a></li>
 						</ul>
 						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Configs</a></li>
-							<li><a href="#" class="button fit">Log off</a></li>
+
+							<li><a href="<?=$checklink?>System/Checker/logout.php" class="button primary fit">Deslogar</a></li>
 						</ul>
 					</nav>

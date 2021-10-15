@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('america/sao_paulo');
 clearstatcache();
 session_start();
 $url = (isset($_GET['url'])) ? $_GET['url']:'home';
@@ -7,6 +8,7 @@ $contb = array_filter(explode('/',$url));
 $file = $url =='admin'?'admin.php':"System/View/" .$url .".php";
 $checkurl ="";
 $checklink ="";
+$_SESSION['URL-BASE'] = "https://groups.lvalentin.com.br/";
 for ($i = 2; $i <= count($contb) ; $i++) { $checkurl = $checkurl."../"; }
 for ($i = 0; $i <= count($contb) ; $i++) { $checklink = $checklink."../"; }
 ?>
@@ -26,12 +28,15 @@ for ($i = 0; $i <= count($contb) ; $i++) { $checklink = $checklink."../"; }
     
 	</head>
 <body class="is-preload">
+<div class="alert" id="alert">
 
+</div>
 <?php
-include('System/View/navbar.php');
 
-if( $url == "home"){
-//  include('System/View/navbar.php');
+
+if( $url != "home"){
+    include('System/Checker/chekerlogin.php');
+    include('System/View/navbar.php');
 }
 
 ?>

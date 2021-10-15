@@ -56,7 +56,7 @@ function listagem($post)
         ?>
 
 
-                <tr>
+                <tr onclick="$(location).attr('href', '../../Group/forum?group=<?=$info['ID']?>');" >
                     <td><?=$info['NOME']?></td>
                     <td><?=$info['DESCRICAO']?></td>
                     <td><?=$info['TIPO']=='L'?'<span class="icon solid alt fa-user" ></span>':'<span class="icon solid alt fa-user-lock" ></span>';?></td>
@@ -74,14 +74,22 @@ function listagem($post)
 function form($post)
 {
     session_start();
-    $areas = implode(',',$post['AREA']);
-    include('../../../System/Checker/conection.php');
+    include('../../System/Checker/conection.php');
 
+    if ($_SESSION['msg']['erro']){
+        echo "<script>aletmsg();</script>";
+        exit();
+    }
+    else{
+        $query = "INSERT INTO GRUPO (NOME, DESCRICAO, AREAS_CONHECIMENTO, TIPO, USUARIOCRIOU) VALUES ('{$post['NOME']}', '{$post['DESCRICAO']}', '{$post['AREACONHECIMENTO']}', '{$post['TIPO']}', '{$_SESSION['login']['ID']}');";
 
-    $query = "UPDATE USUARIO SET `AREAS_CONHECIMENTO` = '".$areas."' WHERE (`ID` = '".$_SESSION['login']['ID']."');";
+        $result_user = mysqli_query($con, $query);
+        $idInserido=mysqli_insert_id($con);
 
-    $result_user = mysqli_query($con, $query);
-    header("Location: ../../../grupos");
+        echo "<script> $(location).attr('href', '../../Group/forum?group={$idInserido}'); </script>";
+        exit();
+    }
+
 }
 
 ?>

@@ -1,8 +1,10 @@
 <?php
-
 switch ($_POST['funcao']) {
     case 'login':
         login($_POST);
+        break;
+    case 'cadastrar':
+        cadastrar($_POST);
         break;
     default:
         echo "i equals 2";
@@ -43,34 +45,51 @@ function login($post){
 }
 
 function cadastrar($post){
+    session_start();
+    $validador = '';
     include('../../System/Checker/conection.php');
 
-    if(empty($_POST['USUARIO']) || empty($_POST['SENHA'])) {
-        echo'login invalido';
-        exit();
+    if(strlen($_POST['SENHA']) < 8 ) {
+        $_SESSION['msg']['erro'][] = "Senha deve ser maior que 8 digitos";
+    }
+    else if ($_POST['SENHA'] != $_POST['SENHACOMFIRM']){
+        $_SESSION['msg']['erro'][] = "Senha está diferente da confirmação";
     }
 
-    $user = mysqli_real_escape_string($con, $_POST['USUARIO']);
-    $password = mysqli_real_escape_string($con, $_POST['SENHA']);
-
-    $query = "SELECT * FROM USUARIO where USUARIO = '{$user}' AND SENHA = md5('{$password}')";
-    $result_user = mysqli_query($con, $query);
-    $result = mysqli_fetch_assoc($result_user);
+    $query = "SELECT ID FROM USUARIO where EMAIL = '{$_POST['EMAIL']}' ";
 
     $result_row = mysqli_query($con, $query);
-    $row = mysqli_num_rows($result_row);
+    $email_existente = mysqli_num_rows($result_row);
 
-    if($row == 1 ) {
-        $_SESSION['login'] = $result;
-        $_SESSION['adm'] = 1;
-        header("Location: ../../../Sistema/home");
+    if ($email_existente){
+        $_SESSION['msg']['erro'][] = "Email já cadastrado";
+    }
+
+    $query = "SELECT ID FROM USUARIO where USUARIO = '{$_POST['USUARIO']}' ";
+
+    $result_row = mysqli_query($con, $query);
+    $usuario_existente = mysqli_num_rows($result_row);
+
+    if ($usuario_existente){
+        $_SESSION['msg']['erro'][] = "Usuario já está sendo utilizado";
+    }
+
+
+    if ($_SESSION['msg']['erro']){
+        echo "<script>aletmsg();</script>";
         exit();
     }
     else{
-        echo'Usuario ou senha invalida';
+        $query = "INSERT INTO USUARIO (NOME,EMAIL,USUARIO,SENHA)	VALUES ('{$_POST['NOME']}','{$_POST['EMAIL']}','{$_POST['USUARIO']}',md5('{$_POST['SENHA']}'));";
+        $result_user = mysqli_query($con, $query);
+        mysqli_fetch_assoc($result_user);
+
+
+        echo '1';
         exit();
     }
-    exit();
+
+
 }
 
 

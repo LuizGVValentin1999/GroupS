@@ -1,7 +1,7 @@
 <div class="topnav">
     <div class="center" style="cursor: pointer;">
-        <a id="todosGrupos" onclick="filtro('todosGrupos');" class="active"  >Chat</a>
-        <a id="publicosGrupos" onclick="filtro('publicosGrupos');">Forum</a>
-        <a id="privadosGrupos" onclick="filtro('privadosGrupos');">Calendario</a>
+        <a  href="chat?group=<?=$_GET['group']?>"  <?=($_GET['url']=='Group/chat'?'class="active"':'')?>>Chat</a>
+        <a  href="forum?group=<?=$_GET['group']?>"  <?=($_GET['url']=='Group/forum'?'class="active"':'')?>>Forum</a>
+        <a  href="calendario?group=<?=$_GET['group']?>"  <?=($_GET['url']=='Group/calendario'?'class="active"':'')?>>Calendario</a>
     </div>
 </div>
