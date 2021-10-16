@@ -15,7 +15,7 @@ unset($_SESSION['CHAT']['OFFSET']);
 <div class="col-6 col-12-xsmall" style="margin: 1%; top: 80%;">
     <ul class="actions fit">
         <input type="hidden" id="GRUPO" name="GRUPO" value="<?=$_GET['group']?>">
-        <li>  <textarea style="width: 100%" onkeyup="buscarlista()" type="text" name="MENSAGEM" id="MENSAGEM" value="" placeholder="Texto"  rows="1"></textarea></li>
+        <li>  <textarea style="width: 100%" type="text" name="MENSAGEM" id="MENSAGEM" value="" placeholder="Texto"  rows="1"></textarea></li>
         <span style="margin: 1%;" onclick="enviar()"  class="icon solid alt fa-paper-plane"></span>
     </ul>
 </div>
@@ -23,7 +23,6 @@ unset($_SESSION['CHAT']['OFFSET']);
 
 </section>
 
-321
 <script>
 
 

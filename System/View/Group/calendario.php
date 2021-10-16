@@ -1,5 +1,7 @@
 
-<div id="holder" class="row" ></div>
+
+<section class="body-mobile">
+    <div id="holder" class="row" ></div>
 <script type="text/tmpl" id="tmpl">
   {{
   var date = date || new Date(),
@@ -149,3 +151,4 @@
   </table>
 </script>
 
+</section>

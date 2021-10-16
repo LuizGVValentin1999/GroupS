@@ -2,9 +2,7 @@
 <section class="body-mobile">
     <div class="col-6 col-12-xsmall" style="margin: 1%;">
 
-        <iframe name="content" style=" display: none">
-        </iframe>
-        <form action="../../System/App/Group/forum.php" method="post" target="content" enctype="multipart/form-data">
+        <form action="../../System/App/Group/forum.php" method="post" id="forum-enviar" enctype="multipart/form-data">
             <input type="hidden" name="funcao" value="form">
             <input type="hidden" id="GRUPO" name="GRUPO" value="<?=$_GET['group']?>">
             <div class="boxx">
@@ -28,8 +26,9 @@
 
 </div>
 
-
 </section>
+
+
 
 <script>
 

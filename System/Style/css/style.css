@@ -184,6 +184,7 @@ p {
 }
 
 .container {
+    overflow-wrap: break-word;
     border: 2px solid #dedede;
     background-color: #f1f1f1;
     border-radius: 5px;
@@ -196,6 +197,10 @@ p {
 }
 .blue{
     color: blue;
+}
+
+.iconscolor{
+    color: #bda26b;
 }
 
 .darker {
@@ -384,10 +389,9 @@ html {
     margin: 0 auto;
     overflow: hidden;
     border-radius: 0px;
-    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
     text-align: center;
     transition:all 0.4s;
-    background: url('../../../System/Style/images/bg-defaut.jpg') center no-repeat;
+    background: url('../../../System/Style/images/bg-defaut.jpg') center;
     background-size: 100%;
 }
 .blog-card a{
@@ -413,9 +417,6 @@ html {
     top: 350px;
     left: 0;
     z-index: 15;
-}
-.blog-card{
-    box-shadow: 0px 18px 20px -9px rgba(0, 10, 30, 0.75);
 }
 .blog-card .card-info {
     opacity: 1;
@@ -767,4 +768,44 @@ textarea {
 .table-tight-vert > tfoot > tr > td {
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.text-post{
+    padding-left: 2px;
+}
+.comentarios{
+    max-width: 550px;
+    margin: auto;
+    border-radius: 16px;
+    background-color: #6fc3df;
+    display: grid;
+    font-size: 18px;
+}
+.comentarios li{
+    display: flex;
+}
+.comentarios ul{
+    margin-bottom: 0px;
+}
+.comentarios .container{
+    width: 90%;
+    margin: auto;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    margin-top: 0.5em;
+}
+.comentarios .container img{
+    max-width: 38px;
+    margin-right: 2px;
+}
+
+.comentarios textarea{
+    height: 66%;
+    color: black;
+    margin: auto;
+    background: white;
+    font-size: 17px;
+    text-size-adjust: auto;
+    padding: 0px;
+    border-radius: 13px;
 }
