@@ -20,7 +20,7 @@
 
         </div>
         <br/>
-        <button type="submit" style="margin: 1em; float: right;" class="button small">Next</button>
+        <button type="submit" style="margin: 1em; float: right;" class="button small">Seguir</button>
     </form>
 
     <!-- Modal -->
@@ -47,6 +47,8 @@
                                     <label for="IMG">imagem do card</label>
                                     <input type="file" name="IMG" id="IMG" />
 
+                                </div>
+                                <div class="field half " style="width: 100%; text-align: center">
                                     <label for="BG">Cor de seleção do card</label>
                                     <input type="color" name="BG" id="BG" />
 
@@ -67,11 +69,13 @@
             </div>
         </div>
     </div>
+
 </section>
 
+
+
+
 <script>
-
-
     function buscarlista(inicial){
         $.ajax({
             url : "<?=$checklink?>System/App/areasConhecimento.php",
@@ -97,39 +101,6 @@
 
     setTimeout(function  run() {
         buscarlista(1);
-    }, 500)
+    }, 1000)
 </script>
 
-<!-- Modal -->
-<div class="modal" id="modal-medicao">
-    <div class="modal-sandbox"></div>
-    <div class="modal-box"  style="width: 80%;">
-        <div class="modal-header">
-            <div class="close-modal close">&#10006;</div>
-            <h1>LOGIN</h1>
-        </div>
-        <div style=" background-color: #ffffff;    display: block;    height: 2px;   width: 100%;"></div>
-        <div class="modal-body" >
-            <div>
-                <div id="resultado"> </div>
-                <form method="POST" >
-                    <div>
-                        <input type="hidden" name="funcao" value="login">
-                        <div class="row gtr-uniform">
-                            <div class="field half " style="width: 100%; text-align: center">
-                                <label for="USUARIO">Usuario</label>
-                                <input type="text" required name="USUARIO" id="USUARIO" />
-                            </div>
-                            <div class="field half" style="width: 100%; text-align: center">
-                                <label for="SENHA">Senha</label>
-                                <input type="password" required name="SENHA" id="SENHA" />
-                            </div>
-
-                        </div>
-                        <a class="button"  onclick="executarlogin()" value="1" name="Botao" style="float: right;margin-top: 20px; "> LOGAR</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>

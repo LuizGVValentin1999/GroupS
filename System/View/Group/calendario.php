@@ -1,7 +1,13 @@
 
+<section class="calendario" >
+    <button data-modal="modal-criar-evento" class="button modal-trigger" style="float: right; ">Criar </button>
+    <hr class="major" style="border: blue; margin: 1.5em 0;">
+    <input type="hidden" id="GRUPO" name="GRUPO" value="<?=$_GET['group']?>">
+    <div id="holder" ></div>
+    <hr class="major" style="border: blue; margin: 1.5em 0;">
+    <div id="result"></div>
 
-<section class="body-mobile">
-    <div id="holder" class="row" ></div>
+
 <script type="text/tmpl" id="tmpl">
   {{
   var date = date || new Date(),
@@ -39,7 +45,7 @@
                   <button class="js-cal-prev btn btn-default">&lt;</button>
                   <button class="js-cal-next btn btn-default">&gt;</button>
                 </span>
-                <button class="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
+                <button id="hoje" class="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
               </td>
               <td>
                 <span class="btn-group btn-group-lg">
@@ -56,10 +62,10 @@
               </td>
               <td style="text-align: right">
                 <span class="btn-group">
-                  <button class="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Year</button>
-                  <button class="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Month</button>
-                  <button class="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Week</button>
-                  <button class="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Day</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Ano</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Mes</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Semana</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Dia</button>
                 </span>
               </td>
             </tr>
@@ -121,11 +127,11 @@
             </thead>
             <tbody>
               <tr>
-                <th class="timetitle" >All Day</th>
+                <th class="timetitle" >Dia Todo</th>
                 <td class="{{: date.toDateCssClass() }}">  </td>
               </tr>
               <tr>
-                <th class="timetitle" >Before 6 AM</th>
+                <th class="timetitle" >Antes das 6 AM</th>
                 <td class="time-0-0"> </td>
               </tr>
               {{for (i = 6; i < 22; i++) { }}
@@ -139,7 +145,7 @@
               </tr>
               {{ } }}
               <tr>
-                <th class="timetitle" >After 10 PM</th>
+                <th class="timetitle" >Depois das 10 PM</th>
                 <td class="time-22-0"> </td>
               </tr>
             </tbody>
@@ -151,4 +157,102 @@
   </table>
 </script>
 
+    <!-- Modal -->
+    <div class="modal" id="modal-criar-evento">
+        <div class="modal-sandbox"></div>
+        <div class="modal-box"  style="width: 80%;">
+            <div class="modal-header">
+                <div class="close-modal close">&#10006;</div>
+                <h1>Criar evento no calendario </h1>
+            </div>
+            <div style=" background-color: #ffffff;    display: block;    height: 2px;   width: 100%;"></div>
+            <div class="modal-body" >
+                <p class="obs" style=" width: 100%; margin-top: -48px;margin-bottom: 25px;">  Crie um evento para lembrar os membros do grupo de reunião, palestra ou evento de interesse do grupo. </p>
+                <div>
+                    <div id="resultado"> </div>
+                    <form id="formcalendario" method="POST" >
+                        <div>
+                            <input type="hidden" name="funcao" value="form">
+                            <input type="hidden" name="GRUPO" value="<?=$_GET['group']?>">
+                            <div class="row gtr-uniform">
+                                <div class="field half " style="width: 100%; text-align: center">
+                                    <label for="NOME">Nome</label>
+                                    <input type="text" placeholder="Nome do evento" required name="NOME" id="NOME" />
+                                </div>
+                                <div class="field half " style="width: 100%; text-align: center">
+                                    <label for="DATAINICIO">Data de inicio</label>
+                                    <input type="datetime-local" placeholder="Data de inicio" required name="INICIO" id="INICIO" />
+                                </div>
+                                <div class="field half " style="width: 100%; text-align: center">
+                                    <label for="DATAINICIO">Data de fim</label>
+                                    <input type="datetime-local" placeholder="Data de fim" required name="FIM" id="FIM" />
+                                </div>
+                                <div class="field half " style="width: 100%; text-align: center">
+                                    <label for="DESCRICAO">Descrição do evento / aonde ele ira ocorrer </label>
+                                    <textarea id="DESCRICAO" name="DESCRICAO" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <a class="button" value="1" onclick="formCalendario()" name="Botao" style="float: right; margin-top: 20px; "> Salvar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-evento">
+        <div class="modal-sandbox"></div>
+        <div class="modal-box"  style="width: 80%; padding: 17px 8px;">
+            <div class="modal-header">
+                <div class="close-modal close">&#10006;</div>
+                <h1 id="nomeEvento">Evento </h1>
+            </div>
+            <div style=" background-color: #ffffff;    display: block;    height: 2px;   width: 100%;"></div>
+            <div class="modal-body" id="body-evento" >
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formCalendario(){
+            $.ajax({
+                url : "<?=$checklink?>System/App/Group/calendario.php",
+                type : 'post',
+                datatype: "html",
+                data : $('#formcalendario').serialize(),
+                beforeSend : function(){
+                }
+            })
+                .done(function(msg){
+                    if (msg=='1'){
+                        $(location).attr('href', '../../../Group/calendario?group='+$("#GRUPO").val());
+                    }
+                    $("#result").html(msg);
+                })
+                .fail(function(jqXHR, textStatus, msg){
+                    alert(msg);
+                });
+        }
+
+        function evento(id){
+            $.ajax({
+                url : "<?=$checklink?>System/App/Group/calendario.php",
+                type : 'post',
+                datatype: "html",
+                data : {
+                    GRUPO: $("#GRUPO").val(),
+                    EVENTO: id,
+                    funcao: 'evento'
+                }
+            })
+                .done(function(msg){
+                    $("#modal-evento").show();
+                    $("#body-evento").html(msg);
+                })
+                .fail(function(jqXHR, textStatus, msg){
+                    alert(msg);
+                });
+        }
+    </script>
 </section>

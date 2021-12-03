@@ -50,6 +50,7 @@ function form($post)
     $query = "UPDATE USUARIO SET `AREAS_CONHECIMENTO` = '".$areas."' WHERE (`ID` = '".$_SESSION['login']['ID']."');";
 
     $result_user = mysqli_query($con, $query);
+    $_SESSION['login']['AREAS_CONHECIMENTO'] = $areas;
     header("Location: ../../../grupos");
 }
 

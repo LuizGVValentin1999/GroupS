@@ -2,7 +2,7 @@
 	<section id="banner" class="major">
 		<div class="inner">
 			<header class="major">
-				<h1>Ola, Bem vindo a Group S</h1>
+				<h1>Olá, Bem vindo a Group S</h1>
 			</header>
 			<div class="content">
 				<p>Um local para aprender e ajudar outros a aprenderem.<br />
@@ -60,10 +60,18 @@
                 <div class="modal-body" >
                     <div>
                         <div id="resultado-cadastro"> </div>
-                        <form method="POST" id="cadastro" onsubmit="fazercadastro();  return false" >
+                        <form method="POST" id="cadastro" action="../../System/App/login.php"  enctype="multipart/form-data" >
                             <div>
-                                <input type="hidden" name="funcao" value="login">
+                                <input type="hidden" name="funcao" value="cadastrar">
                                 <div class="row gtr-uniform">
+                                    <div class="field half " style="width: 100%; text-align: center">
+                                        <label for="FOTO">Foto de usuário</label>
+                                        <br/>
+                                        <label class="label-ignore" for="uploadArquivo" >
+                                            <img id="Previewfotop" src="System/App/Files/Users/userD.png" />
+                                        </label>
+                                        <input style="display:none" id="uploadArquivo" type="file" name="FOTO"  accept="image/png,image/jpeg">
+                                    </div>
                                     <div class="field half " style="width: 100%; text-align: center">
                                         <label for="USUARIO">Nome completo</label>
                                         <input type="text" required id="NOME-CADASTRO" name="NOME"/>
@@ -86,7 +94,7 @@
                                     </div>
 
                                 </div>
-                                <button class="button" type="submit" value="1" style="float: right;margin-top: 20px; "> Cadastrar</button>
+                                <a class="button" onclick="fazercadastro()" type="submit" value="1" style="float: right;margin-top: 20px;"> Cadastrar</a>
                             </div>
                         </form>
                     </div>
@@ -98,7 +106,6 @@
 
 
 <script>
-
 
 
     function executarlogin(){
@@ -119,6 +126,8 @@
             .done(function(msg){
                 if (msg==1)
                     $(location).attr('href', '../../../areasConhecimento');
+                else if(msg==2)
+                    $(location).attr('href', '../../../grupos');
                 else
                     $("#resultado").html(msg);
             })
@@ -138,22 +147,30 @@
                 EMAIL : $("#EMAIL-CADASTRO").val(),
                 SENHA : $("#SENHA-CADASTRO").val(),
                 SENHACOMFIRM : $("#SENHA-COMFIRM-CADASTROa").val(),
-                funcao : 'cadastrar'
+                funcao : 'validacadastrar'
             },
             beforeSend : function(){
                 $("#resultado").html("ENVIANDO...");
             }
-
         })
             .done(function(msg){
-                if (msg==1)
-                    $(location).attr('href', '../../../areasConhecimento');
+                if (msg==1){
+                $('#cadastro').submit();
+                }
                 else
                     $("#resultado").html(msg);
             })
             .fail(function(jqXHR, textStatus, msg){
                 alert(msg);
             });
+    }
+
+
+    uploadArquivo.onchange = evt => {
+        const [file] = uploadArquivo.files
+        if (file) {
+            Previewfotop.src = URL.createObjectURL(file)
+        }
     }
 
 </script>

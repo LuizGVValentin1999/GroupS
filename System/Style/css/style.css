@@ -37,13 +37,15 @@
 
 .modal-header {
     padding: 5px 5px;
-    height:100px;
+    min-height:100px;
     background: #373c5e;
     color: #ffffff;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
 }
-
+.modal-header h1{
+    width: 95%;
+}
 .modal-body {
     background:#2a2f4a;
     padding: 60px 40px;
@@ -129,7 +131,7 @@ p {
 }
 
 .alert-close{
-    color :#2a2f4a !important;
+    color :#8740ab !important;
     font-weight: bold !important;
     font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     position: absolute;
@@ -188,8 +190,8 @@ p {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
     border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 5px;
+    margin: 5px 0;
 }
 
 .black{
@@ -216,12 +218,26 @@ p {
     display: table;
 }
 
+.profile img,
 .container img {
     float: left;
     max-width: 60px;
+    height: 60px;
+    -webkit-clip-path: circle(30px at center);
     width: 100%;
-    margin-right: 20px;
-    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#chat {
+    font-size: 85%;
+}
+
+#Previewfotop{
+    margin: auto;
+    max-width: 100px;
+    height: 100px;
+    -webkit-clip-path: circle(45px at center);
+    width: 100%;
 }
 
 .container.darker img{
@@ -682,17 +698,16 @@ h3:after {
 
 textarea {
     resize: none;
+
 }
 
-.calendar-day {
-    width: 100px;
-    min-width: 100px;
-    max-width: 100px;
-    height: 80px;
+#MENSAGEM{
+    min-height: 60px;
 }
+
 .calendar-table {
     margin: 0 auto;
-    width: 700px;
+    max-width: 700px;
 }
 .selected {
     background-color: #8991ec;
@@ -711,14 +726,19 @@ textarea {
     background-repeat: repeat-x;
     color: #3c763d;
     border-width: 1px;
-    font-size: .75em;
-    padding: 0 .75em;
+    font-size: .65em;
+    padding: 0 .45em;
     line-height: 2em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 1px;
 }
+
+.calendar-day .event{
+    max-width: 150px;
+}
+
 .event.begin {
     border-left: 1px solid #b2dba1;
     border-top-left-radius: 4px;
@@ -796,6 +816,8 @@ textarea {
 }
 .comentarios .container img{
     max-width: 38px;
+    max-height: 38px;
+    -webkit-clip-path: circle(19px at center);
     margin-right: 2px;
 }
 
@@ -808,4 +830,63 @@ textarea {
     text-size-adjust: auto;
     padding: 0px;
     border-radius: 13px;
+}
+
+.calendario{
+    overflow: auto;
+
+
+}
+.menu{
+    display: none;
+    position: absolute;
+    background: white;
+    border-radius: 5px;
+    color: black;
+    list-style: none;
+    padding-left: 0;
+    z-index: 999;
+    cursor: pointer;
+}
+.menu a {
+    padding-right: 12px;
+}
+
+.calendario td,
+.calendario th {
+    width: 150px;
+}
+
+.top-chat{
+    border-top: 1px solid #909eeb;
+    border-bottom: 1px solid #909eeb;
+    background-image: linear-gradient(to bottom, #909eeb 0px, #909eeb 100%);
+    background-repeat: repeat-x;
+    color: #000083;
+    border-width: 1px;
+    padding: 0 .45em;
+    line-height: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.end-forum{
+    border-top: 1px solid #909eeb;
+    border-bottom: 1px solid #909eeb;
+    background-image: linear-gradient(to bottom, #909eeb 0px, #909eeb 100%);
+    background-repeat: repeat-x;
+    color: #000083;
+    border-width: 1px;
+    padding: 0 .45em;
+    line-height: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
 }

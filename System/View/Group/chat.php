@@ -1,14 +1,17 @@
 <?php
 unset($_SESSION['CHAT']['OFFSET']);
+include('System/Checker/conection.php');
+$query = "SELECT * FROM GRUPO WHERE ID = {$_GET['group']}; ";
+$result = mysqli_query($con, $query);
+$info = mysqli_fetch_array($result);
 ?>
 <section class="body-mobile">
 
 
-    <h2>Chat Messages</h2>
+    <h2>Chat do grupo : <?=$info['NOME']?></h2>
 
-    <div id="chat" style="height: 70vh; overflow-x: auto;
-">
-
+    <div id="chat" style="height: 70vh; overflow-x: auto;">
+        <div class="top-chat"> Inicio do chat. Envie uma mensagem no campo abaixo</div>
     </div>
 
 
@@ -75,7 +78,7 @@ unset($_SESSION['CHAT']['OFFSET']);
 
         })
             .done(function(msg){
-                chat(1);
+                chat();
                 $("#MENSAGEM").val('');
             })
             .fail(function(jqXHR, textStatus, msg){

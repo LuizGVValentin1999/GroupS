@@ -167,7 +167,6 @@ a:active {
 }
 
 strong, b {
-	color: #ffffff;
 	font-weight: 600;
 }
 
@@ -180,7 +179,6 @@ h1, h2, h3, h4, h5, h6 {
 	color: #ffffff;
 	font-weight: 600;
 	line-height: 1.65;
-	margin: 0 0 1em 0;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1896,6 +1894,7 @@ label :not(.label-ignore) {
 }
 
 input[type="text"],
+input[type="datetime-local"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
@@ -1920,6 +1919,7 @@ textarea {
 }
 
 input[type="text"]:invalid,
+input[type="datetime-local"]:invalid,
 input[type="password"]:invalid,
 input[type="email"]:invalid,
 input[type="tel"]:invalid,
@@ -1931,6 +1931,7 @@ textarea:invalid {
 }
 
 input[type="text"]:focus,
+input[type="datetime-local"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
@@ -1966,6 +1967,7 @@ select::-ms-expand {
 }
 
 input[type="text"],
+input[type="datetime-local"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
